@@ -1,0 +1,4 @@
+# Ignore crawl data directories
+crawl_data/demo_data/
+crawl_data/hungphat_data/
+crawl_data/crawler_env/
