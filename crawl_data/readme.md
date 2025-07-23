@@ -1,4 +1,3 @@
-"""
 # Hùng Phát JSC Product Crawler
 
 Crawler system for extracting product data from Hùng Phát JSC website.
@@ -80,4 +79,3 @@ Edit `config.py` to modify:
 - User agent rotation
 - Directory structure
 - Category classifications
-"""

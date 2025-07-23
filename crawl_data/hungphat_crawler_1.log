@@ -1,0 +1,269 @@
+(crawler_env) C:\Users\DELL\Documents\V-cute\crawl_data>python run_crawler.py --mode crawl --delay 4 --output hungphat_data_1 --verbose
+INFO:root:Starting Hùng Phát JSC crawling process...
+INFO:root:Step 1: Generating pagination URLs...
+INFO:root:Generating pagination URLs...
+INFO:root:Generated 10 pagination URLs
+INFO:root:Step 2: Extracting product links from all pages...
+INFO:root:Extracting product links from: https://hungphat-jsc.com.vn/collections/all?q=&page=1&view=grid
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): hungphat-jsc.com.vn:443
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /collections/all?q=&page=1&view=grid HTTP/1.1" 200 21318
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/collections/all?q=&page=1&view=grid
+INFO:root:Found 31 product links from https://hungphat-jsc.com.vn/collections/all?q=&page=1&view=grid
+INFO:root:Extracting product links from: https://hungphat-jsc.com.vn/collections/all?q=&page=2&view=grid
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /collections/all?q=&page=2&view=grid HTTP/1.1" 200 21522
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/collections/all?q=&page=2&view=grid
+INFO:root:Found 39 product links from https://hungphat-jsc.com.vn/collections/all?q=&page=2&view=grid
+INFO:root:Extracting product links from: https://hungphat-jsc.com.vn/collections/all?q=&page=3&view=grid
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /collections/all?q=&page=3&view=grid HTTP/1.1" 200 21674
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/collections/all?q=&page=3&view=grid
+INFO:root:Found 42 product links from https://hungphat-jsc.com.vn/collections/all?q=&page=3&view=grid
+INFO:root:Extracting product links from: https://hungphat-jsc.com.vn/collections/all?q=&page=4&view=grid
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /collections/all?q=&page=4&view=grid HTTP/1.1" 200 21527
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/collections/all?q=&page=4&view=grid
+INFO:root:Found 42 product links from https://hungphat-jsc.com.vn/collections/all?q=&page=4&view=grid
+INFO:root:Extracting product links from: https://hungphat-jsc.com.vn/collections/all?q=&page=5&view=grid
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /collections/all?q=&page=5&view=grid HTTP/1.1" 200 21492
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/collections/all?q=&page=5&view=grid
+INFO:root:Found 42 product links from https://hungphat-jsc.com.vn/collections/all?q=&page=5&view=grid
+INFO:root:Extracting product links from: https://hungphat-jsc.com.vn/collections/all?q=&page=6&view=grid
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /collections/all?q=&page=6&view=grid HTTP/1.1" 200 21652
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/collections/all?q=&page=6&view=grid
+INFO:root:Found 42 product links from https://hungphat-jsc.com.vn/collections/all?q=&page=6&view=grid
+INFO:root:Extracting product links from: https://hungphat-jsc.com.vn/collections/all?q=&page=7&view=grid
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /collections/all?q=&page=7&view=grid HTTP/1.1" 200 21510
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/collections/all?q=&page=7&view=grid
+INFO:root:Found 41 product links from https://hungphat-jsc.com.vn/collections/all?q=&page=7&view=grid
+INFO:root:Extracting product links from: https://hungphat-jsc.com.vn/collections/all?q=&page=8&view=grid
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /collections/all?q=&page=8&view=grid HTTP/1.1" 200 21819
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/collections/all?q=&page=8&view=grid
+INFO:root:Found 40 product links from https://hungphat-jsc.com.vn/collections/all?q=&page=8&view=grid
+INFO:root:Extracting product links from: https://hungphat-jsc.com.vn/collections/all?q=&page=9&view=grid
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /collections/all?q=&page=9&view=grid HTTP/1.1" 200 21757
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/collections/all?q=&page=9&view=grid
+INFO:root:Found 41 product links from https://hungphat-jsc.com.vn/collections/all?q=&page=9&view=grid
+INFO:root:Extracting product links from: https://hungphat-jsc.com.vn/collections/all?q=&page=10&view=grid
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /collections/all?q=&page=10&view=grid HTTP/1.1" 200 20924
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/collections/all?q=&page=10&view=grid
+INFO:root:Found 35 product links from https://hungphat-jsc.com.vn/collections/all?q=&page=10&view=grid
+INFO:root:Total unique product links found: 125
+INFO:root:Step 3: Extracting product details...
+INFO:root:Processing product 1/50: https://hungphat-jsc.com.vn/vali-uzo
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-uzo
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-uzo HTTP/1.1" 200 21580
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-uzo
+INFO:root:Processing product 2/50: https://hungphat-jsc.com.vn/startup-1
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/startup-1
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /startup-1 HTTP/1.1" 200 21147
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/startup-1
+INFO:root:Processing product 3/50: https://hungphat-jsc.com.vn/hung-phat-1
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/hung-phat-1
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /hung-phat-1 HTTP/1.1" 200 21436
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/hung-phat-1
+INFO:root:Processing product 4/50: https://hungphat-jsc.com.vn/travel-king
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/travel-king
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /travel-king HTTP/1.1" 200 21734
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/travel-king
+INFO:root:Processing product 5/50: https://hungphat-jsc.com.vn/vali-nhua-1
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-1
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-1 HTTP/1.1" 200 21472
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-1
+INFO:root:Processing product 6/50: https://hungphat-jsc.com.vn/vali-nhua-abs
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-abs
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-abs HTTP/1.1" 200 21676
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-abs
+INFO:root:Processing product 7/50: https://hungphat-jsc.com.vn/vali-nhua-abs-pc
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-abs-pc
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-abs-pc HTTP/1.1" 200 21183
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-abs-pc
+INFO:root:Processing product 8/50: https://hungphat-jsc.com.vn/vali-nhua-pc
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-pc
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-pc HTTP/1.1" 200 20902
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-pc
+INFO:root:Processing product 9/50: https://hungphat-jsc.com.vn/vali-nhua-pp
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-pp
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-pp HTTP/1.1" 200 21600
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-pp
+INFO:root:Processing product 10/50: https://hungphat-jsc.com.vn/vali-khung-nhom
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-khung-nhom
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-khung-nhom HTTP/1.1" 200 21720
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-khung-nhom
+INFO:root:Processing product 11/50: https://hungphat-jsc.com.vn/vali-vai
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-vai
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-vai HTTP/1.1" 200 21305
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-vai
+INFO:root:Processing product 12/50: https://hungphat-jsc.com.vn/vali-keo-tre-em
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-keo-tre-em
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-keo-tre-em HTTP/1.1" 200 20462
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-keo-tre-em
+INFO:root:Processing product 13/50: https://hungphat-jsc.com.vn/balo-laptop
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/balo-laptop
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /balo-laptop HTTP/1.1" 200 20629
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/balo-laptop
+INFO:root:Processing product 14/50: https://hungphat-jsc.com.vn/balo-du-lich
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/balo-du-lich
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /balo-du-lich HTTP/1.1" 200 20765
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/balo-du-lich
+INFO:root:Processing product 15/50: https://hungphat-jsc.com.vn/balo-tre-em
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/balo-tre-em
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /balo-tre-em HTTP/1.1" 200 20559
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/balo-tre-em
+INFO:root:Processing product 16/50: https://hungphat-jsc.com.vn/tui-laptop
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/tui-laptop
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /tui-laptop HTTP/1.1" 200 20641
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/tui-laptop
+INFO:root:Processing product 17/50: https://hungphat-jsc.com.vn/tui-dung-cu
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/tui-dung-cu
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /tui-dung-cu HTTP/1.1" 200 20833
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/tui-dung-cu
+INFO:root:Processing product 18/50: https://hungphat-jsc.com.vn/tui-du-lich-1
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/tui-du-lich-1
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /tui-du-lich-1 HTTP/1.1" 200 20610
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/tui-du-lich-1
+INFO:root:Processing product 19/50: https://hungphat-jsc.com.vn/tui-trong-keo
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/tui-trong-keo
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /tui-trong-keo HTTP/1.1" 200 21156
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/tui-trong-keo
+INFO:root:Processing product 20/50: https://hungphat-jsc.com.vn/vali-nhua-uzo
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-uzo
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-uzo HTTP/1.1" 200 19308
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-uzo
+INFO:root:Processing product 21/50: https://hungphat-jsc.com.vn/vali-nhua-startup
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-startup
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-startup HTTP/1.1" 200 19176
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-startup
+INFO:root:Processing product 22/50: https://hungphat-jsc.com/vali-nhua-hung-phat
+INFO:root:Extracting product data from: https://hungphat-jsc.com/vali-nhua-hung-phat
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): hungphat-jsc.com:443
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com:443 "GET /vali-nhua-hung-phat HTTP/1.1" 301 0
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com:443 "GET /vali-nhua-hung-phatlua-chon-ben-bi-dang-cap/ HTTP/1.1" 200 30612
+INFO:root:Successfully fetched: https://hungphat-jsc.com/vali-nhua-hung-phat
+INFO:root:Processing product 23/50: https://hungphat-jsc.com.vn/vali-nhua-travelking
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-travelking
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-travelking HTTP/1.1" 200 19654
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-travelking
+INFO:root:Processing product 24/50: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-2103
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-2103
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-hung-phat-2103 HTTP/1.1" 200 29362
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-2103
+INFO:root:Processing product 25/50: https://hungphat-jsc.com.vn/vali-nhua-uzo-230
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-uzo-230
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-uzo-230 HTTP/1.1" 200 29310
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-uzo-230
+INFO:root:Processing product 26/50: https://hungphat-jsc.com.vn/vali-nhua-uzo-22-size-16
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-uzo-22-size-16
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-uzo-22-size-16 HTTP/1.1" 200 28292
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-uzo-22-size-16
+INFO:root:Processing product 27/50: https://hungphat-jsc.com.vn/vali-nhua-hungphat-518
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-hungphat-518
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-hungphat-518 HTTP/1.1" 200 30616
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-hungphat-518
+INFO:root:Processing product 28/50: https://hungphat-jsc.com/vali-nhua-1
+INFO:root:Extracting product data from: https://hungphat-jsc.com/vali-nhua-1
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com:443 "GET /vali-nhua-1 HTTP/1.1" 404 None
+ERROR:root:Error fetching https://hungphat-jsc.com/vali-nhua-1: 404 Client Error: Not Found for url: https://hungphat-jsc.com/vali-nhua-1
+INFO:root:Processing product 29/50: https://hungphat-jsc.com.vn/balo-marcello
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/balo-marcello
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /balo-marcello HTTP/1.1" 200 18942
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/balo-marcello
+INFO:root:Processing product 30/50: https://hungphat-jsc.com.vn/balo-pika
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/balo-pika
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /balo-pika HTTP/1.1" 200 20364
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/balo-pika
+INFO:root:Processing product 31/50: https://hungphat-jsc.com/balo-hung-phat
+INFO:root:Extracting product data from: https://hungphat-jsc.com/balo-hung-phat
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com:443 "GET /balo-hung-phat HTTP/1.1" 200 30060
+INFO:root:Successfully fetched: https://hungphat-jsc.com/balo-hung-phat
+INFO:root:Processing product 32/50: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-228
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-228
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-hung-phat-228 HTTP/1.1" 200 29455
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-228
+INFO:root:Processing product 33/50: https://hungphat-jsc.com.vn/vali-nhua-hungphat-620-1
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-hungphat-620-1
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-hungphat-620-1 HTTP/1.1" 200 28081
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-hungphat-620-1
+INFO:root:Processing product 34/50: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-2102
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-2102
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-hung-phat-2102 HTTP/1.1" 200 27314
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-2102
+INFO:root:Processing product 35/50: https://hungphat-jsc.com.vn/vali-nhua-travelking-8088
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-travelking-8088
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-travelking-8088 HTTP/1.1" 200 28242
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-travelking-8088
+INFO:root:Processing product 36/50: https://hungphat-jsc.com.vn/vali-khung-nhom-hung-phat-6009
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-khung-nhom-hung-phat-6009
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-khung-nhom-hung-phat-6009 HTTP/1.1" 200 27840
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-khung-nhom-hung-phat-6009
+INFO:root:Processing product 37/50: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-618
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-618
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-hung-phat-618 HTTP/1.1" 200 28224
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-618
+INFO:root:Processing product 38/50: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-2101
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-2101
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-hung-phat-2101 HTTP/1.1" 200 29766
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-2101
+INFO:root:Processing product 39/50: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-668
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-668
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-hung-phat-668 HTTP/1.1" 200 32753
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-668
+INFO:root:Processing product 40/50: https://hungphat-jsc.com.vn/vali-khung-nhom-hung-phat-6006
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-khung-nhom-hung-phat-6006
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-khung-nhom-hung-phat-6006 HTTP/1.1" 200 28987
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-khung-nhom-hung-phat-6006
+INFO:root:Processing product 41/50: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-2100
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-2100
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-hung-phat-2100 HTTP/1.1" 200 28439
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-2100
+INFO:root:Processing product 42/50: https://hungphat-jsc.com.vn/vali-khung-nhom-hung-phat-6005
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-khung-nhom-hung-phat-6005
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-khung-nhom-hung-phat-6005 HTTP/1.1" 200 28292
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-khung-nhom-hung-phat-6005
+INFO:root:Processing product 43/50: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-662
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-662
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-hung-phat-662 HTTP/1.1" 200 30218
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-hung-phat-662
+INFO:root:Processing product 44/50: https://hungphat-jsc.com.vn/vali-nhua-hungphat-663
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-hungphat-663
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-hungphat-663 HTTP/1.1" 200 28274
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-hungphat-663
+INFO:root:Processing product 45/50: https://hungphat-jsc.com.vn/vali-vai-travelking-036
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-vai-travelking-036
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-vai-travelking-036 HTTP/1.1" 200 28007
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-vai-travelking-036
+INFO:root:Processing product 46/50: https://hungphat-jsc.com.vn/vali-khung-nhom-travelking-8083
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-khung-nhom-travelking-8083
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-khung-nhom-travelking-8083 HTTP/1.1" 200 28606
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-khung-nhom-travelking-8083
+INFO:root:Processing product 47/50: https://hungphat-jsc.com.vn/vali-khung-nhom-hung-phat-6003
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-khung-nhom-hung-phat-6003
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-khung-nhom-hung-phat-6003 HTTP/1.1" 200 28665
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-khung-nhom-hung-phat-6003
+INFO:root:Processing product 48/50: https://hungphat-jsc.com.vn/vali-vai-hung-phat-015
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-vai-hung-phat-015
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-vai-hung-phat-015 HTTP/1.1" 200 29101
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-vai-hung-phat-015
+INFO:root:Processing product 49/50: https://hungphat-jsc.com.vn/vali-nhua-startup-526
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-nhua-startup-526
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-nhua-startup-526 HTTP/1.1" 200 29600
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-nhua-startup-526
+INFO:root:Processing product 50/50: https://hungphat-jsc.com.vn/vali-khung-nhom-hung-phat-6004
+INFO:root:Extracting product data from: https://hungphat-jsc.com.vn/vali-khung-nhom-hung-phat-6004
+DEBUG:urllib3.connectionpool:https://hungphat-jsc.com.vn:443 "GET /vali-khung-nhom-hung-phat-6004 HTTP/1.1" 200 30336
+INFO:root:Successfully fetched: https://hungphat-jsc.com.vn/vali-khung-nhom-hung-phat-6004
+INFO:root:Successfully extracted 49 products
+INFO:root:Step 4: Post-processing classification...
+INFO:root:Post-processing classification for 49 products...
+INFO:root:Post-processing classification completed
+INFO:root:Step 5: Saving data...
+INFO:root:Saved 49 products to hungphat_data/raw_data/all_products_20250723_112538.json and hungphat_data/processed_data/products_summary_20250723_112538.csv
+INFO:root:Saved products by category: ['suitcase', 'plastic_suitcase', 'fabric_suitcase', 'backpack', 'bag']
+
+==================================================
+CRAWLING SUMMARY REPORT
+==================================================
+Total Products Crawled: 49
+Categories: {'suitcase': 10, 'plastic_suitcase': 26, 'fabric_suitcase': 3, 'backpack': 6, 'bag': 4}
+Materials: {'nhựa': 25, 'vải': 3}
+Sizes: {'16': 1}
+==================================================
+INFO:root:Crawling completed! Total products: 49
+Crawled 49 products successfully
