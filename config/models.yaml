@@ -1,0 +1,24 @@
+# 📝 File: rag_pipeline/config/models.yaml
+embedding:
+  model_name: "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+  model_kwargs:
+    device: "cpu"  # or "cuda" if available
+  encode_kwargs:
+    normalize_embeddings: true
+    batch_size: 32
+
+llm:
+  model_name: "llama3:8b"
+  temperature: 0.7
+  max_tokens: 1000
+  top_p: 0.9
+
+chunking:
+  chunk_size: 512
+  chunk_overlap: 50
+  separators: ["\n\n", "\n", ".", "!", "?", ","]
+
+vectorstore:
+  collection_name: "hungphat_products"
+  distance_metric: "cosine"
+  persist_directory: "./data/vectorstore/chroma_db"

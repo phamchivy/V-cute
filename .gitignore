@@ -5,4 +5,9 @@ crawl_data/hungphat_data_2/
 crawl_data/hungphat_data_3/
 crawl_data/hungphat_data_4/
 crawl_data/crawler_env/
-crawl_data/__pycache__/
+
+rag_env/
+data/
+
+__pycache__/
+*.pyc
