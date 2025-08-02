@@ -6,8 +6,8 @@ from pathlib import Path
 from src.indexing.chroma_indexer import ChromaIndexer
 from src.indexing.llamaindex_builder import LlamaIndexBuilder
 from src.query.llama3_client import Llama3Client
+from config.settings import Config
 from src.embedding.sentence_transformer_client import SentenceTransformerClient
-
 import sys
 sys.path.append(str(Path(__file__).parent.parent.parent))
 from config.settings import Config
@@ -133,34 +133,131 @@ class RAGEngine:
         return "\n".join(response_parts)
     
     def _build_context(self, search_results: Dict, question: str) -> str:
-        """Build context from search results"""
-        context_parts = [self.system_prompt]
-        
-        context_parts.append("\nTHÔNG TIN SẢN PHẨM LIÊN QUAN:")
-        
-        documents = search_results['documents'][0]
-        metadatas = search_results['metadatas'][0]
-        distances = search_results['distances'][0]
-        
-        for i, (doc, metadata, distance) in enumerate(zip(documents, metadatas, distances), 1):
-            context_parts.append(f"\nSản phẩm {i}:")
-            context_parts.append(f"Tên: {metadata.get('name', 'N/A')}")
-            context_parts.append(f"Danh mục: {metadata.get('category', 'N/A')}")
+        """Build context from search results using query templates"""
+        try:
+            from config.settings import Config
             
-            # Add document content snippet
-            doc_snippet = doc[:200] + "..." if len(doc) > 200 else doc
-            context_parts.append(f"Chi tiết: {doc_snippet}")
-            context_parts.append(f"Độ liên quan: {1-distance:.2f}")
-        
-        context_parts.append(f"\nCâu hỏi: {question}")
-        
-        return "\n".join(context_parts)
+            # Load template file
+            templates_file = Config.PROJECT_ROOT / "config" / "prompts" / "query_templates.txt"
+            
+            # Default template fallback
+            default_template = """{system_prompt}
+
+            THÔNG TIN SẢN PHẨM LIÊN QUAN:
+            {retrieved_products}
+
+            CÂU HỎI: {user_question}
+
+            Hãy phân tích thông tin trên và đưa ra lời khuyên phù hợp nhất cho khách hàng."""
+
+            # Try to load template from file
+            template = default_template
+            if templates_file.exists():
+                with open(templates_file, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                    # Extract PRODUCT_RECOMMENDATION template
+                    if '[PRODUCT_RECOMMENDATION]' in content:
+                        start = content.find('[PRODUCT_RECOMMENDATION]') + len('[PRODUCT_RECOMMENDATION]')
+                        end = content.find('[', start)
+                        if end == -1:
+                            end = len(content)
+                        template = content[start:end].strip()
+                        print("✅ Loaded template from file")
+                    else:
+                        print("⚠️ PRODUCT_RECOMMENDATION template not found, using default")
+            else:
+                print("⚠️ Templates file not found, using default")
+            
+            # Format products data
+            documents = search_results['documents'][0]
+            metadatas = search_results['metadatas'][0] if 'metadatas' in search_results else [{}] * len(documents)
+            distances = search_results['distances'][0] if 'distances' in search_results else [0.5] * len(documents)
+            
+            product_parts = []
+            for i, (doc, metadata, distance) in enumerate(zip(documents, metadatas, distances), 1):
+                product_info = f"""Sản phẩm {i}:
+                - Tên: {metadata.get('name', 'N/A')}
+                - Danh mục: {metadata.get('category', 'N/A')}
+                - Chi tiết: {doc[:200]}{'...' if len(doc) > 200 else ''}
+                - Độ liên quan: {1-distance:.2f}"""
+                product_parts.append(product_info)
+            
+            formatted_products = '\n\n'.join(product_parts)
+            
+            # Use template to build context
+            context = template.format(
+                system_prompt=self.system_prompt,
+                retrieved_products=formatted_products,
+                user_question=question
+            )
+            
+            return context
+            
+        except Exception as e:
+            print(f"❌ Error with template: {e}, using fallback")
+            
+            # Fallback to original logic
+            context_parts = [self.system_prompt]
+            context_parts.append("\nTHÔNG TIN SẢN PHẨM LIÊN QUAN:")
+            
+            documents = search_results['documents'][0]
+            metadatas = search_results['metadatas'][0] if 'metadatas' in search_results else [{}] * len(documents)
+            distances = search_results['distances'][0] if 'distances' in search_results else [0.5] * len(documents)
+            
+            for i, (doc, metadata, distance) in enumerate(zip(documents, metadatas, distances), 1):
+                context_parts.append(f"\nSản phẩm {i}:")
+                context_parts.append(f"Tên: {metadata.get('name', 'N/A')}")
+                context_parts.append(f"Danh mục: {metadata.get('category', 'N/A')}")
+                
+                doc_snippet = doc[:200] + "..." if len(doc) > 200 else doc
+                context_parts.append(f"Chi tiết: {doc_snippet}")
+                context_parts.append(f"Độ liên quan: {1-distance:.2f}")
+            
+            context_parts.append(f"\nCâu hỏi: {question}")
+            
+            return "\n".join(context_parts)
     
     def _load_system_prompt(self) -> str:
-        """Load system prompt"""
-        return """Bạn là chuyên gia tư vấn sản phẩm vali, balo của Công ty Cổ phần Hùng Phát.
-Hãy tư vấn sản phẩm phù hợp nhất cho khách hàng dựa trên thông tin được cung cấp.
-Trả lời bằng tiếng Việt, ngắn gọn và thực tế, tập trung vào 1-2 sản phẩm tốt nhất."""
+        """Load system prompt from file with fallback to default"""
+        try:
+            # Import Config directly since RAGEngine doesn't have self.config
+            from config.settings import Config
+            
+            # Build path to system prompt file
+            prompt_file = Config.PROJECT_ROOT / "config" / "prompts" / "system_prompt.txt"
+            
+            if prompt_file.exists():
+                with open(prompt_file, 'r', encoding='utf-8') as f:
+                    system_prompt = f.read().strip()
+                    
+                if system_prompt:  # Check if file is not empty
+                    print(f"✅ Loaded system prompt from: {prompt_file}")
+                    return system_prompt
+                else:
+                    print(f"⚠️ System prompt file is empty: {prompt_file}")
+            else:
+                print(f"⚠️ System prompt file not found: {prompt_file}")
+                # Auto-create the prompt file
+                Config.create_default_prompts()
+                
+                # Try loading again after creation
+                if prompt_file.exists():
+                    with open(prompt_file, 'r', encoding='utf-8') as f:
+                        system_prompt = f.read().strip()
+                    if system_prompt:
+                        print(f"✅ Created and loaded system prompt from: {prompt_file}")
+                        return system_prompt
+                
+        except Exception as e:
+            print(f"❌ Error loading system prompt file: {e}")
+        
+        # Fallback to default prompt
+        fallback_prompt = """Bạn là chuyên gia tư vấn sản phẩm vali, balo của Công ty Cổ phần Hùng Phát. 
+    Hãy tư vấn sản phẩm phù hợp nhất cho khách hàng dựa trên thông tin được cung cấp. 
+    Trả lời bằng tiếng Việt, ngắn gọn và thực tế, tập trung vào 1-2 sản phẩm tốt nhất."""
+        
+        print("💡 Using fallback system prompt")
+        return fallback_prompt
 
 # 🧪 TEST: Create comprehensive test
 

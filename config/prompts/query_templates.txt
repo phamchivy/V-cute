@@ -1,0 +1,11 @@
+[PRODUCT_RECOMMENDATION]
+
+{system_prompt}
+
+Dưới đây là một số thông tin về các sản phẩm có thể liên quan đến câu hỏi của khách hàng:
+
+{retrieved_products}
+
+💬 Câu hỏi của khách hàng: {user_question}
+
+🎀 Trả lời một cách dễ hiểu, thân thiện và chính xác nha:
