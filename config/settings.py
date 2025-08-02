@@ -2,6 +2,7 @@
 
 from pathlib import Path
 import os
+import yaml
 
 class Config:
     # Paths
@@ -14,26 +15,41 @@ class Config:
     # ✅ SỬA: crawl_data nằm TRONG v-cute (cùng level với config)
     CSV_PATH = PROJECT_ROOT / "crawl_data" / "hungphat_data_4" / "processed_data" / "products_summary_20250723_163031.csv"
     
-    # Models
-    EMBEDDING_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-    LLM_MODEL = "llama3:8b"
-    
-    # Text processing
-    CHUNK_SIZE = 512
-    CHUNK_OVERLAP = 50
-    MIN_CHUNK_SIZE = 100
+    # Load model config from YAML
+    MODELS_YAML_PATH = PROJECT_ROOT / "config" / "models.yaml"
+    with open(MODELS_YAML_PATH, "r", encoding="utf-8") as f:
+        MODEL_CONFIG = yaml.safe_load(f)
+
+    # Embedding model
+    EMBEDDING_MODEL = MODEL_CONFIG["embedding"]["model_name"]
+    EMBEDDING_DEVICE = MODEL_CONFIG["embedding"]["model_kwargs"]["device"]
+    BATCH_SIZE = MODEL_CONFIG["embedding"]["encode_kwargs"]["batch_size"]
+    EMBEDDING_NORMALIZE = MODEL_CONFIG["embedding"]["encode_kwargs"].get("normalize_embeddings", True)
+
+    # LLM model
+    LLM_MODEL = MODEL_CONFIG["llm"]["model_name"]
+    LLM_TEMPERATURE = MODEL_CONFIG["llm"]["temperature"]
+    LLM_MAX_TOKENS = MODEL_CONFIG["llm"]["max_tokens"]
+    LLM_TOP_P = MODEL_CONFIG["llm"]["top_p"]
+
+    # Chunking
+    CHUNK_SIZE = MODEL_CONFIG["chunking"]["chunk_size"]
+    CHUNK_OVERLAP = MODEL_CONFIG["chunking"]["chunk_overlap"]
+    CHUNK_SEPARATORS = MODEL_CONFIG["chunking"]["separators"]
+    MIN_CHUNK_SIZE = MODEL_CONFIG["chunking"]["min_chunk_size"]
+
+    # Vector store
+    COLLECTION_NAME = MODEL_CONFIG["vectorstore"]["collection_name"]
+    VECTORSTORE_DISTANCE = MODEL_CONFIG["vectorstore"]["distance_metric"]
     
     # Embedding settings
-    BATCH_SIZE = 32
     MAX_LENGTH = 384
     
     # Vector store
-    COLLECTION_NAME = "hungphat_products"
     TOP_K_RESULTS = 5
     
     # Ollama
     OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
-
     OLLAMA_EXECUTABLE = r"C:\Users\DELL\AppData\Local\Programs\Ollama\ollama.exe"
     
     # Test method

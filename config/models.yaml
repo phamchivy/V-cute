@@ -16,6 +16,7 @@ llm:
 chunking:
   chunk_size: 512
   chunk_overlap: 50
+  min_chunk_size: 100
   separators: ["\n\n", "\n", ".", "!", "?", ","]
 
 vectorstore:
