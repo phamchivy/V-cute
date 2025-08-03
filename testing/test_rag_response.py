@@ -1,5 +1,8 @@
 import sys
-sys.path.insert(0, '.')
+from pathlib import Path
+
+parent_dir = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(parent_dir))
 from src.query.rag_engine import RAGEngine
 
 print('🧪 Testing correct methods...')

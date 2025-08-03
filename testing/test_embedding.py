@@ -3,7 +3,10 @@
 # Cancel current download (Ctrl+C) and use this approach:
 
 import sys
-sys.path.insert(0, '.')
+from pathlib import Path
+
+parent_dir = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(parent_dir))
 
 from src.indexing.chroma_indexer import ChromaIndexer
 from src.embedding.sentence_transformer_client import SentenceTransformerClient
