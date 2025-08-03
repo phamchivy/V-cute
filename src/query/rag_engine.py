@@ -32,7 +32,7 @@ class RAGEngine:
     
     def initialize(self) -> None:
         """Initialize all components"""
-        print("🚀 Initializing RAG Engine...")
+        print("Initializing RAG Engine...")
         self.chroma_indexer.create_collection()
         
         # Check ChromaDB
@@ -40,21 +40,21 @@ class RAGEngine:
         if info['status'] != 'ready':
             raise Exception(f"ChromaDB not ready: {info}")
         
-        print(f"✅ ChromaDB ready: {info['document_count']} documents")
+        print(f"ChromaDB ready: {info['document_count']} documents")
         
         # ✅ Load OUR embedding model (not ChromaDB default)
-        print("📥 Loading our embedding model...")
+        print("Loading our embedding model...")
         self.embedding_client.load_model()
-        print("✅ Embedding model ready")
+        print("Embedding model ready")
         
         # Check Llama3
         if not self.llama3_client.check_model_availability():
-            print(f"⚠️  Warning: Llama3 model {self.llama3_client.model} not available")
+            print(f"Warning: Llama3 model {self.llama3_client.model} not available")
         else:
-            print("✅ Llama3 model ready")
+            print("Llama3 model ready")
         
         self.is_initialized = True
-        print("🎉 RAG Engine initialized successfully!")
+        print("RAG Engine initialized successfully!")
     
     def query_vector_only(self, question: str, n_results: int = None) -> Dict:
         """Query using vector search only (no LLM) - FIXED"""
@@ -73,7 +73,7 @@ class RAGEngine:
             else:
                 query_embedding_flat = query_embedding
                 
-            print(f"🔍 Embedding shape: {query_embedding.shape} -> flattened: {query_embedding_flat.shape}")
+            print(f"Embedding shape: {query_embedding.shape} -> flattened: {query_embedding_flat.shape}")
             
             # ✅ Search with properly formatted embedding
             search_results = self.chroma_indexer.search(
@@ -85,7 +85,7 @@ class RAGEngine:
             return search_results
             
         except Exception as e:
-            print(f"❌ Vector search error: {e}")
+            print(f"Vector search error: {e}")
             return {"documents": [[]], "metadatas": [[]], "distances": [[]]}
     
     def query_with_llm(self, question: str, n_results: int = None) -> str:
@@ -113,7 +113,7 @@ class RAGEngine:
             return response
         except Exception as e:
             # Fallback: return vector search results
-            print(f"⚠️  LLM error: {e}")
+            print(f"LLM error: {e}")
             return self._format_vector_results(search_results)
     
     def _format_vector_results(self, search_results: Dict) -> str:
@@ -162,11 +162,11 @@ class RAGEngine:
                         if end == -1:
                             end = len(content)
                         template = content[start:end].strip()
-                        print("✅ Loaded template from file")
+                        print("Loaded template from file")
                     else:
-                        print("⚠️ PRODUCT_RECOMMENDATION template not found, using default")
+                        print("PRODUCT_RECOMMENDATION template not found, using default")
             else:
-                print("⚠️ Templates file not found, using default")
+                print("Templates file not found, using default")
             
             # Format products data
             documents = search_results['documents'][0]
@@ -194,7 +194,7 @@ class RAGEngine:
             return context
             
         except Exception as e:
-            print(f"❌ Error with template: {e}, using fallback")
+            print(f"Error with template: {e}, using fallback")
             
             # Fallback to original logic
             context_parts = [self.system_prompt]
@@ -231,10 +231,10 @@ class RAGEngine:
                     system_prompt = f.read().strip()
                     
                 if system_prompt:  # Check if file is not empty
-                    print(f"✅ Loaded system prompt from: {prompt_file}")
+                    print(f"Loaded system prompt from: {prompt_file}")
                     return system_prompt
                 else:
-                    print(f"⚠️ System prompt file is empty: {prompt_file}")
+                    print(f"System prompt file is empty: {prompt_file}")
             else:
                 print(f"⚠️ System prompt file not found: {prompt_file}")
                 # Auto-create the prompt file
@@ -245,18 +245,18 @@ class RAGEngine:
                     with open(prompt_file, 'r', encoding='utf-8') as f:
                         system_prompt = f.read().strip()
                     if system_prompt:
-                        print(f"✅ Created and loaded system prompt from: {prompt_file}")
+                        print(f"Created and loaded system prompt from: {prompt_file}")
                         return system_prompt
                 
         except Exception as e:
-            print(f"❌ Error loading system prompt file: {e}")
+            print(f"Error loading system prompt file: {e}")
         
         # Fallback to default prompt
         fallback_prompt = """Bạn là chuyên gia tư vấn sản phẩm vali, balo của Công ty Cổ phần Hùng Phát. 
     Hãy tư vấn sản phẩm phù hợp nhất cho khách hàng dựa trên thông tin được cung cấp. 
     Trả lời bằng tiếng Việt, ngắn gọn và thực tế, tập trung vào 1-2 sản phẩm tốt nhất."""
         
-        print("💡 Using fallback system prompt")
+        print("Using fallback system prompt")
         return fallback_prompt
 
 # 🧪 TEST: Create comprehensive test
@@ -264,7 +264,7 @@ class RAGEngine:
 def test_rag_comprehensive():
     """Test RAG engine comprehensively"""
     
-    print("🧪 Testing RAG Engine...")
+    print("Testing RAG Engine...")
     
     # Initialize
     rag = RAGEngine()
@@ -278,7 +278,7 @@ def test_rag_comprehensive():
     
     for query in test_queries:
         print(f"\n" + "="*50)
-        print(f"❓ Query: {query}")
+        print(f"Query: {query}")
         print("="*50)
         
         # Test 1: Vector search only
@@ -295,17 +295,17 @@ def test_rag_comprehensive():
                 print(f"   Similarity: {similarity:.3f}")
                 print(f"   Preview: {doc[:80]}...")
         else:
-            print("❌ No vector results")
+            print("No vector results")
         
         # Test 2: Full RAG (Vector + LLM)
-        print(f"\n🤖 RAG Response:")
+        print(f"\nRAG Response:")
         try:
             rag_response = rag.query_with_llm(query)
-            print(f"✅ {rag_response}")
+            print(f"{rag_response}")
         except Exception as e:
-            print(f"❌ RAG Error: {e}")
+            print(f"RAG Error: {e}")
     
-    print(f"\n✅ RAG testing completed!")
+    print(f"\nRAG testing completed!")
 
 if __name__ == "__main__":
     test_rag_comprehensive()

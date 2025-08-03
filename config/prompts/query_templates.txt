@@ -6,6 +6,6 @@ Dưới đây là một số thông tin về các sản phẩm có thể liên q
 
 {retrieved_products}
 
-💬 Câu hỏi của khách hàng: {user_question}
+Câu hỏi của khách hàng: {user_question}
 
-🎀 Trả lời một cách dễ hiểu, thân thiện và chính xác nha:
+Trả lời một cách dễ hiểu, thân thiện và chính xác nha:
