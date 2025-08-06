@@ -4,8 +4,10 @@ from pathlib import Path
 
 # Add project root to path for imports
 project_root = Path(__file__).parent.parent.parent
-sys.path.append(str(project_root / "src"))
+sys.path.append(str(project_root / "src"))          # For RAG engine
+sys.path.append(str(project_root))                  # For facebook_bot modules
 
+# Now imports should work
 from query.rag_engine import RAGEngine
 from facebook_bot.api.messenger_api import MessengerAPI
 from facebook_bot.core.response_formatter import ResponseFormatter
@@ -37,6 +39,8 @@ class HungPhatBot:
             
         except Exception as e:
             print(f"[ERROR] Error initializing bot: {e}")
+            import traceback
+            traceback.print_exc()
             raise
     
     def handle_message(self, sender_id: str, message_text: str) -> bool:
@@ -69,6 +73,8 @@ class HungPhatBot:
                 
         except Exception as e:
             print(f"[ERROR] Error handling message: {e}")
+            import traceback
+            traceback.print_exc()
             
             # Send error message
             error_msg = BotSettings.FALLBACK_RESPONSE
@@ -97,23 +103,32 @@ class HungPhatBot:
     
     def send_welcome_message(self, sender_id: str):
         """Send welcome message to new users"""
-        welcome_text = """Xin chao! 
+        welcome_text = """Xin chao! Chao mung ban den voi Hung Phat Store!
 
-Toi la tro ly tu van cua Hung Phat Store. Toi co the giup ban:
+Toi la tro ly tu van cua cua hang. Toi co the giup ban:
 
 - Tim vali, balo phu hop
-- So sanh gia ca
-- Tu van tinh nang
-- Chon size phu hop
+- So sanh gia ca san pham  
+- Tu van tinh nang va kich thuoc
+- Goi y san pham theo nhu cau
 
-Hay hoi toi bat cu dieu gi ve san pham nhe!"""
+Hay chon mot trong cac lua chon ben duoi hoac hoi toi bat cu dieu gi!"""
         
         # Send welcome message with quick replies
-        self.messenger.send_message(
-            sender_id, 
-            welcome_text, 
-            quick_replies=BotSettings.QUICK_REPLIES
-        )
+        try:
+            success = self.messenger.send_message(
+                sender_id, 
+                welcome_text, 
+                quick_replies=BotSettings.QUICK_REPLIES
+            )
+            
+            if success:
+                print(f"[WELCOME] Welcome message sent successfully to {sender_id}")
+            else:
+                print(f"[ERROR] Failed to send welcome message to {sender_id}")
+                
+        except Exception as e:
+            print(f"[ERROR] Error sending welcome message: {e}")
     
     def shutdown(self):
         """Gracefully shutdown bot"""

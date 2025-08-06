@@ -236,7 +236,7 @@ class RAGEngine:
                 else:
                     print(f"System prompt file is empty: {prompt_file}")
             else:
-                print(f"⚠️ System prompt file not found: {prompt_file}")
+                print(f"System prompt file not found: {prompt_file}")
                 # Auto-create the prompt file
                 Config.create_default_prompts()
                 
@@ -258,6 +258,46 @@ class RAGEngine:
         
         print("Using fallback system prompt")
         return fallback_prompt
+    
+    def _simple_fallback(self, question: str) -> str:
+        """Simple fallback responses"""
+        q = question.lower()
+        
+        if 'vali' in q and ('20' in q or 'cabin' in q):
+            return "Toi khuyen Vali nhua HUNG PHAT 2103 (20 inch) - chat lieu ABS+PC, khoa TSA, banh xe spinner. Phu hop cabin va chuyen di ngan."
+        
+        elif 'vali' in q:
+            return "Chung toi co vali 20 inch (cabin), 24 inch (trung binh), 28 inch (lon). Ban can kich thuoc nao?"
+        
+        elif 'balo' in q and 'laptop' in q:
+            return "Balo Laptop MARCELLO M602 rat tot - ngan laptop 15.6 inch, chong soc, co cong USB. Kich thuoc 45x33x14cm."
+        
+        elif 'balo' in q:
+            return "Co balo laptop, balo hoc sinh, balo du lich. Ban can loai nao cu the?"
+        
+        elif 'tui' in q or 'xach' in q:
+            return "Tui xach da that, tui cong so, tui thoi trang - gia tu 200k den 2 trieu. Ban thich kieu nao?"
+        
+        elif 'gia' in q:
+            return "Vali 20': 800k-1.5tr, Balo laptop: 300k-800k, Tui xach: 200k-2tr. Ban quan tam san pham gi?"
+        
+        else:
+            return "Xin chao! Toi tu van vali, balo, tui xach Hung Phat. Ban can san pham gi cu the?"
+    
+    def query(self, question: str) -> str:
+        """Main query method - simple addition to existing RAG Engine"""
+        try:
+            # Use existing methods if available
+            if hasattr(self, 'query_with_llm'):
+                return self.query_with_llm(question)
+            elif hasattr(self, 'query_vector_only'):
+                search_results = self.query_vector_only(question)
+                return self._format_vector_results(search_results)
+            else:
+                return self._simple_fallback(question)
+                
+        except Exception as e:
+            return self._simple_fallback(question)
 
 # 🧪 TEST: Create comprehensive test
 

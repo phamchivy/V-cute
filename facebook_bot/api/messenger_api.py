@@ -37,11 +37,11 @@ class MessengerAPI:
             if response and response.get("message_id"):
                 return True
             else:
-                print(f"❌ Failed to send message: {response}")
+                print(f"Failed to send message: {response}")
                 return False
                 
         except Exception as e:
-            print(f"❌ Error sending message: {e}")
+            print(f"Error sending message: {e}")
             return False
     
     def send_typing_indicator(self, recipient_id: str, typing_on: bool = True) -> bool:
@@ -58,7 +58,7 @@ class MessengerAPI:
             return response is not None
             
         except Exception as e:
-            print(f"❌ Error sending typing indicator: {e}")
+            print(f"Error sending typing indicator: {e}")
             return False
     
     def send_quick_replies(self, recipient_id: str, text: str, 
@@ -83,9 +83,9 @@ class MessengerAPI:
             if response.status_code == 200:
                 return response.json()
             else:
-                print(f"❌ Facebook API error: {response.status_code} - {response.text}")
+                print(f"Facebook API error: {response.status_code} - {response.text}")
                 return None
                 
         except requests.exceptions.RequestException as e:
-            print(f"❌ Request error: {e}")
+            print(f"Request error: {e}")
             return None

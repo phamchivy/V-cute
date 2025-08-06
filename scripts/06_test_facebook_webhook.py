@@ -10,6 +10,8 @@ from pathlib import Path
 
 # Add project paths
 project_root = Path(__file__).parent.parent
+sys.path.append(str(project_root))
+sys.path.append(str(project_root / "server"))
 sys.path.append(str(project_root / "facebook_bot"))
 
 from facebook_bot.config.facebook_config import FacebookConfig
