@@ -29,7 +29,7 @@ class RAGEngine:
         
         # Load system prompt
         self.system_prompt = self._load_system_prompt()
-    
+
     def initialize(self) -> None:
         """Initialize all components"""
         print("Initializing RAG Engine...")
@@ -289,14 +289,22 @@ class RAGEngine:
         try:
             # Use existing methods if available
             if hasattr(self, 'query_with_llm'):
+                print("Using query_with_llm")
+                sys.stdout.flush()
                 return self.query_with_llm(question)
             elif hasattr(self, 'query_vector_only'):
+                print("Using query_vector_only")
+                sys.stdout.flush()
                 search_results = self.query_vector_only(question)
                 return self._format_vector_results(search_results)
             else:
+                print("No method found, using fallback")
+                sys.stdout.flush()
                 return self._simple_fallback(question)
                 
         except Exception as e:
+            print(f"Exception: {e}")
+            sys.stdout.flush()
             return self._simple_fallback(question)
 
 # 🧪 TEST: Create comprehensive test

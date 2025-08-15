@@ -7,6 +7,7 @@ import sys
 import time
 import threading
 import subprocess
+import os
 from pathlib import Path
 
 # Add project paths
@@ -57,22 +58,30 @@ def start_ngrok_simple():
         return None, None
 
 def start_flask_server():
-    """Start Flask webhook server"""
+    """Start Flask webhook server with UTF-8 encoding"""
     print("🚀 Starting Flask server...")
     
     try:
         # Import and run Flask app
         server_path = project_root / "server" / "app.py"
         
-        # Run Flask app using subprocess
+        # Set environment for subprocess
+        env = os.environ.copy()
+        env['PYTHONIOENCODING'] = 'utf-8'
+        env['PYTHONUTF8'] = '1'
+        
+        # Run Flask app with UTF-8 encoding
         cmd = [sys.executable, str(server_path)]
         process = subprocess.Popen(
             cmd, 
             stdout=subprocess.PIPE, 
             stderr=subprocess.STDOUT, 
             text=True,
+            encoding='utf-8',           # ← Fix encoding
+            errors='replace',           # ← Handle errors gracefully
             bufsize=1,
-            universal_newlines=True
+            universal_newlines=True,
+            env=env                     # ← Pass UTF-8 environment
         )
         
         return process
@@ -82,15 +91,27 @@ def start_flask_server():
         return None
 
 def monitor_server(process):
-    """Monitor server output"""
+    """Monitor server output with safe encoding"""
     try:
         for line in iter(process.stdout.readline, ''):
             if line:
-                print(line.rstrip())
+                # Safe print with encoding handling
+                try:
+                    print(line.rstrip())
+                except UnicodeEncodeError:
+                    # Fallback for problematic characters
+                    safe_line = line.encode('ascii', errors='replace').decode('ascii')
+                    print(f"[ENCODED] {safe_line.rstrip()}")
             if process.poll() is not None:
                 break
     except Exception as e:
         print(f"❌ Server monitoring error: {e}")
+        # Continue monitoring despite errors
+        try:
+            print("🔄 Attempting to continue monitoring...")
+            time.sleep(1)
+        except:
+            pass
 
 def main():
     """Main function to start Facebook bot"""

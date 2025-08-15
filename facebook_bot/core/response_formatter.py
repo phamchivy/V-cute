@@ -13,7 +13,7 @@ class ResponseFormatter:
         try:
             # Clean and format the response
             formatted = self._clean_text(rag_response)
-            formatted = self._add_emojis(formatted)
+            #formatted = self._add_emojis(formatted)
             formatted = self._truncate_if_needed(formatted)
             formatted = self._add_call_to_action(formatted)
             

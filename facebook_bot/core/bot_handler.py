@@ -47,16 +47,20 @@ class HungPhatBot:
         """Handle incoming message from user"""
         try:
             print(f"[MESSAGE] Received from {sender_id}: {message_text}")
+            sys.stdout.flush()
             
             # Send typing indicator
             self.messenger.send_typing_indicator(sender_id, True)
             
             # Process message with RAG
             print("[RAG] Processing with RAG...")
+            sys.stdout.flush()
             response = self.rag_engine.query(message_text)
+            print(f"[RAG] Response from RAG: {response}")
             
             # Format response for Facebook
             formatted_response = self.formatter.format_for_facebook(response)
+            print(f"[FORMATTED RESPONSE] Formatted response: {formatted_response}")
             
             # Send typing indicator off
             self.messenger.send_typing_indicator(sender_id, False)
@@ -66,13 +70,16 @@ class HungPhatBot:
             
             if success:
                 print(f"[SUCCESS] Response sent to {sender_id}")
+                sys.stdout.flush()
                 return True
             else:
                 print(f"[ERROR] Failed to send response to {sender_id}")
+                sys.stdout.flush()
                 return False
                 
         except Exception as e:
             print(f"[ERROR] Error handling message: {e}")
+            sys.stdout.flush()
             import traceback
             traceback.print_exc()
             
@@ -105,14 +112,14 @@ class HungPhatBot:
         """Send welcome message to new users"""
         welcome_text = """Xin chao! Chao mung ban den voi Hung Phat Store!
 
-Toi la tro ly tu van cua cua hang. Toi co the giup ban:
+        Toi la tro ly tu van cua cua hang. Toi co the giup ban:
 
-- Tim vali, balo phu hop
-- So sanh gia ca san pham  
-- Tu van tinh nang va kich thuoc
-- Goi y san pham theo nhu cau
+        - Tim vali, balo phu hop
+        - So sanh gia ca san pham  
+        - Tu van tinh nang va kich thuoc
+        - Goi y san pham theo nhu cau
 
-Hay chon mot trong cac lua chon ben duoi hoac hoi toi bat cu dieu gi!"""
+        Hay chon mot trong cac lua chon ben duoi hoac hoi toi bat cu dieu gi!"""
         
         # Send welcome message with quick replies
         try:

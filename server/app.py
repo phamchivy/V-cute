@@ -95,9 +95,11 @@ def webhook_receive():
     try:
         data = request.get_json()
         print(f"[WEBHOOK] Received data: {json.dumps(data, indent=2)}")
+        sys.stdout.flush()
         
         if not bot:
             print("[ERROR] Bot not initialized")
+            sys.stdout.flush()
             return "Bot not ready", 500
         
         # Process each entry
@@ -116,30 +118,57 @@ def webhook_receive():
                     # Handle text messages
                     if 'text' in message:
                         message_text = message['text']
-                        print(f"[MESSAGE] Processing from {sender_id}: {message_text}")
-                        bot.handle_message(sender_id, message_text)
+                        #print(f"[MESSAGE] Processing text from {sender_id}: {message_text}")
+                        
+                        # Process message and get response
+                        response = bot.handle_message(sender_id, message_text)
+                        print(f"[RESPONSE] Text response to {sender_id}: {response}")
+                        sys.stdout.flush()
                     
                     # Handle attachments (images, files, etc.)
                     elif 'attachments' in message:
+                        #attachment_types = [att.get('type', 'unknown') for att in message['attachments']]
+                        #print(f"[ATTACHMENT] Processing from {sender_id}: {attachment_types}")
+                        
                         attachment_response = "Toi nhan duoc file/hinh cua ban! Tuy nhien, toi chi co the tra loi cau hoi bang text. Hay hoi toi ve san pham vali, balo nhe!"
+                        
+                        # Send response and log it
                         bot.messenger.send_message(sender_id, attachment_response)
+                        print(f"[RESPONSE] Attachment response to {sender_id}: {attachment_response}")
+                        sys.stdout.flush()
                 
                 # Handle postbacks (button clicks)
                 elif 'postback' in messaging_event:
                     postback = messaging_event['postback']
                     payload = postback.get('payload', '')
-                    print(f"[POSTBACK] Processing from {sender_id}: {payload}")
-                    bot.handle_postback(sender_id, payload)
+                    #title = postback.get('title', 'No title')
+                    #print(f"[POSTBACK] Processing from {sender_id}: payload='{payload}', title='{title}'")
+                    
+                    # Process postback and get response
+                    response = bot.handle_postback(sender_id, payload)
+                    print(f"[RESPONSE] Postback response to {sender_id}: {response}")
+                    sys.stdout.flush()
                 
-                # Handle when user first starts conversation
-                elif 'delivery' in messaging_event or 'read' in messaging_event:
-                    # Ignore delivery receipts and read confirmations
-                    pass
+                # Handle delivery receipts and read confirmations
+                elif 'delivery' in messaging_event:
+                    delivered_mids = messaging_event['delivery'].get('mids', [])
+                    watermark = messaging_event['delivery'].get('watermark', 'unknown')
+                    print(f"[DELIVERY] Message delivered to {sender_id}: {len(delivered_mids)} messages, watermark={watermark}")
+                    sys.stdout.flush()
+                
+                elif 'read' in messaging_event:
+                    read_watermark = messaging_event['read'].get('watermark', 'unknown')
+                    print(f"[READ] Message read by {sender_id}: watermark={read_watermark}")
+                    sys.stdout.flush()
         
         return "OK", 200
         
     except Exception as e:
         print(f"[ERROR] Webhook processing error: {e}")
+        sys.stdout.flush()
+        import traceback
+        print(f"[ERROR] Full traceback: {traceback.format_exc()}")
+        sys.stdout.flush()
         return "Processing error", 500
 
 @app.errorhandler(404)
