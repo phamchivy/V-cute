@@ -1,4 +1,4 @@
-# 🏗️ Hùng Phát RAG Pipeline
+# 🏗️ V-CUTE (Ollama + Ngrok version)
 
 Complete RAG (Retrieval-Augmented Generation) pipeline for Hùng Phát product consultation using:
 - **LlamaIndex** for RAG framework
