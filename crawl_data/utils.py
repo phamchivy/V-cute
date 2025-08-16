@@ -1,10 +1,6 @@
 import requests
-import time
-import random
-from urllib.parse import urljoin
 import hashlib
 import re
-from datetime import datetime
 import logging
 
 def setup_logging(log_file="crawler.log"):

@@ -1,8 +1,6 @@
 import pandas as pd
 import json
-from collections import defaultdict
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 class DataProcessor:
     def __init__(self, data_dir="hungphat_data"):

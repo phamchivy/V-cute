@@ -5,7 +5,6 @@ Start Facebook Bot with Ngrok tunnel - Fixed for free ngrok plan
 
 import sys
 import time
-import threading
 import subprocess
 import os
 from pathlib import Path

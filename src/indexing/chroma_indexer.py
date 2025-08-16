@@ -1,11 +1,9 @@
 # 📝 File: rag_pipeline/src/indexing/chroma_indexer.py
 import chromadb
 from chromadb.config import Settings
-import numpy as np
-from typing import List, Dict, Optional
+from typing import List, Dict
 from pathlib import Path
 import json
-import pickle
 
 from config.settings import Config
 

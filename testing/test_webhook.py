@@ -3,15 +3,9 @@
 Comprehensive webhook testing before Facebook integration
 """
 
-import sys
 import requests
-import json
 import time
-from pathlib import Path
 
-# Add project paths
-project_root = Path(__file__).parent.parent
-sys.path.append(str(project_root / "facebook_bot"))
 
 def test_server_basic():
     """Test if server is running"""

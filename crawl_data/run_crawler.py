@@ -8,7 +8,6 @@ Main execution script with command-line interface
 import argparse
 import sys
 import json
-from datetime import datetime
 import logging
 
 # Updated main() function in run_crawler.py

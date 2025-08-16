@@ -1,15 +1,11 @@
 # 🔧 FIX: Update src/indexing/llamaindex_builder.py
 
-from llama_index import VectorStoreIndex, Document, StorageContext, ServiceContext
+from llama_index import VectorStoreIndex, StorageContext, ServiceContext
 from llama_index.vector_stores import ChromaVectorStore
 from llama_index.embeddings import HuggingFaceEmbedding
 from llama_index.llms import Ollama
-
 import chromadb
-from typing import List, Dict
 from pathlib import Path
-import json
-
 import sys
 sys.path.append(str(Path(__file__).parent.parent.parent))
 from config.settings import Config

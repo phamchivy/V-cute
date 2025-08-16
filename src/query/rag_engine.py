@@ -1,16 +1,11 @@
 # 🔧 FIX: Update src/query/rag_engine.py to use our embeddings
-
-from typing import List, Dict, Optional
-from pathlib import Path
-
+import sys 
+from typing import Dict
+from config.settings import Config
 from src.indexing.chroma_indexer import ChromaIndexer
 from src.indexing.llamaindex_builder import LlamaIndexBuilder
 from src.query.llama3_client import Llama3Client
-from config.settings import Config
 from src.embedding.sentence_transformer_client import SentenceTransformerClient
-import sys
-sys.path.append(str(Path(__file__).parent.parent.parent))
-from config.settings import Config
 
 class RAGEngine:
     """Complete RAG system - FIXED to use our embeddings"""
@@ -294,17 +289,14 @@ class RAGEngine:
                 return self.query_with_llm(question)
             elif hasattr(self, 'query_vector_only'):
                 print("Using query_vector_only")
-                sys.stdout.flush()
                 search_results = self.query_vector_only(question)
                 return self._format_vector_results(search_results)
             else:
                 print("No method found, using fallback")
-                sys.stdout.flush()
                 return self._simple_fallback(question)
                 
         except Exception as e:
             print(f"Exception: {e}")
-            sys.stdout.flush()
             return self._simple_fallback(question)
 
 # 🧪 TEST: Create comprehensive test

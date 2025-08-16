@@ -4,12 +4,12 @@ import json
 import time
 import os
 import re
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urljoin
 import csv
 from datetime import datetime
 import logging
 from dataclasses import dataclass
-from typing import List, Dict, Optional
+from typing import List, Dict
 import hashlib
 
 # # Setup logging

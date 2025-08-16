@@ -11,6 +11,7 @@ class Config:
     RAW_DATA_DIR = DATA_DIR / "raw"
     PROCESSED_DATA_DIR = DATA_DIR / "processed"
     VECTORSTORE_DIR = DATA_DIR / "vectorstore" / "chroma_db"
+
     
     # ✅ SỬA: crawl_data nằm TRONG v-cute (cùng level với config)
     CSV_PATH = PROJECT_ROOT / "crawl_data" / "hungphat_data_4" / "processed_data" / "products_summary_20250723_163031.csv"

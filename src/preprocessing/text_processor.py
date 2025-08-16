@@ -1,6 +1,6 @@
 # 📝 File: rag_pipeline/src/preprocessing/text_processor.py
 import re
-from typing import List, Dict
+from typing import Dict
 import pandas as pd
 from unidecode import unidecode
 

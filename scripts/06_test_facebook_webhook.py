@@ -5,7 +5,6 @@ Test Facebook webhook functionality
 
 import sys
 import requests
-import json
 from pathlib import Path
 
 # Add project paths

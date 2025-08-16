@@ -3,7 +3,6 @@
 import ollama
 import subprocess
 import time
-from typing import Dict, Optional
 
 class Llama3Client:
     """Client for Llama3 via Ollama - IMPROVED VERSION"""

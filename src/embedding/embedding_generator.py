@@ -1,11 +1,8 @@
 # 📝 File: rag_pipeline/src/embedding/embedding_generator.py
 import json
-import numpy as np
 from pathlib import Path
 from typing import List, Dict
-from tqdm import tqdm
 import pickle
-
 from src.embedding.sentence_transformer_client import SentenceTransformerClient
 from config.settings import Config
 

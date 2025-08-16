@@ -1,9 +1,8 @@
 # 📝 File: rag_pipeline/src/preprocessing/data_cleaner.py
 import pandas as pd
 import re
-from typing import List, Dict, Optional
+from typing import Optional
 from pathlib import Path
-import json
 
 class DataCleaner:
     """Clean and prepare product data for RAG"""

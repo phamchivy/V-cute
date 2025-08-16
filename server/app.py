@@ -1,14 +1,8 @@
-import os
+#import functools
 import sys
 from pathlib import Path
-from flask import Flask, request, jsonify
+from flask import Flask, request
 import json
-
-# Set UTF-8 encoding for Windows console
-if sys.platform.startswith('win'):
-    import locale
-    if locale.getpreferredencoding().upper() != 'UTF-8':
-        os.environ['PYTHONIOENCODING'] = 'utf-8'
 
 # Add project paths
 project_root = Path(__file__).parent.parent
@@ -118,7 +112,6 @@ def webhook_receive():
                     # Handle text messages
                     if 'text' in message:
                         message_text = message['text']
-                        #print(f"[MESSAGE] Processing text from {sender_id}: {message_text}")
                         
                         # Process message and get response
                         response = bot.handle_message(sender_id, message_text)
@@ -126,10 +119,7 @@ def webhook_receive():
                         sys.stdout.flush()
                     
                     # Handle attachments (images, files, etc.)
-                    elif 'attachments' in message:
-                        #attachment_types = [att.get('type', 'unknown') for att in message['attachments']]
-                        #print(f"[ATTACHMENT] Processing from {sender_id}: {attachment_types}")
-                        
+                    elif 'attachments' in message:                        
                         attachment_response = "Toi nhan duoc file/hinh cua ban! Tuy nhien, toi chi co the tra loi cau hoi bang text. Hay hoi toi ve san pham vali, balo nhe!"
                         
                         # Send response and log it
@@ -141,8 +131,6 @@ def webhook_receive():
                 elif 'postback' in messaging_event:
                     postback = messaging_event['postback']
                     payload = postback.get('payload', '')
-                    #title = postback.get('title', 'No title')
-                    #print(f"[POSTBACK] Processing from {sender_id}: payload='{payload}', title='{title}'")
                     
                     # Process postback and get response
                     response = bot.handle_postback(sender_id, payload)

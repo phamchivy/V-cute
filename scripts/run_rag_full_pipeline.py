@@ -39,6 +39,8 @@ def main():
     print("2. Embedding Generation") 
     print("3. Vector Indexing")
     print("4. RAG Testing")
+    print("5. Facebook Testing")
+    print("6. Webhook Testing")
     print("=" * 60)
     
     # Confirm execution
@@ -54,7 +56,9 @@ def main():
         ("01_preprocess_data.py", "Step 1: Data Preprocessing"),
         ("02_generate_embeddings.py", "Step 2: Embedding Generation"),
         ("03_build_index.py", "Step 3: Vector Indexing"),
-        ("04_test_rag.py", "Step 4: RAG Testing")
+        ("04_test_rag.py", "Step 4: RAG Testing"),
+        ("05_start_facebook_bot.py", "Step 5: Facebook Testing"),
+        ("06_test_facebook_webhook.py", "Step 6: Webhook Testing")
     ]
     
     # Execute steps

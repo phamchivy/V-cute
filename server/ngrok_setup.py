@@ -1,7 +1,6 @@
-import os
 import sys
 from pathlib import Path
-from pyngrok import ngrok, conf
+from pyngrok import ngrok
 import time
 
 # Add project path

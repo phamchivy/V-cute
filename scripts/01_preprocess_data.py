@@ -5,9 +5,6 @@
 import sys
 from pathlib import Path
 
-# Add src to path
-#sys.path.append(str(Path(__file__).parent.parent / "src"))
-
 # Add project root to Python path
 PROJECT_ROOT = Path(__file__).parent.parent  # Go up from scripts/ to v-cute/
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -16,7 +13,6 @@ from config.settings import Config
 from src.preprocessing.data_cleaner import DataCleaner
 from src.preprocessing.text_processor import TextProcessor
 from src.preprocessing.chunking import DocumentChunker
-import pandas as pd
 import json
 
 def main():
