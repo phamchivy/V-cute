@@ -59,7 +59,7 @@ class HungPhatBot:
             print(f"[RAG] Response from RAG: {response}")
             
             # Format response for Facebook
-            formatted_response = self.formatter.format_for_facebook(response)
+            formatted_response = self.formatter.format_for_facebook(response, tone="friendly")
             print(f"[FORMATTED RESPONSE] Formatted response: {formatted_response}")
             
             # Send typing indicator off
