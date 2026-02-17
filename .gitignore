@@ -8,6 +8,7 @@ crawl_data/crawler_env/
 
 rag_env/
 data/
+log_files/
 
 __pycache__/
 *.pyc
