@@ -12,6 +12,7 @@ Usage:
 """
 
 from pathlib import Path
+from datetime import datetime
 import yaml
 import os
 
@@ -145,7 +146,8 @@ class CrawlerConfig(Config):
 
         # --- Directory settings (env override → yaml fallback) ---
         _default_base = PROJECT_ROOT / self.require("crawler", "base_dir")
-        self.base_dir: Path = Path(os.getenv("BASE_DIR", str(_default_base)))
+        timestamp = datetime.now().strftime("%H_%M-%d_%m_%Y")
+        self.base_dir: Path = Path(os.getenv("BASE_DIR", str(_default_base / timestamp)))
 
         self.raw_data_dir: Path = Path(os.getenv(
             "RAW_DATA_DIR",

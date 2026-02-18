@@ -4,7 +4,7 @@ Crawler system for extracting product data from Hùng Phát JSC website.
 
 ## Installation
 
-1. Install required packages:
+1. Install required packages (Virtual Environment):
 ```bash
 pip install -r requirements.txt
 ```
@@ -46,7 +46,7 @@ python run_crawler.py --mode crawl --verbose
 ## Output Structure
 
 ```
-hungphat_data/
+data/
 ├── raw_data/                   # Raw JSON data
 ├── processed_data/             # Processed CSV/JSON
 ├── images/                     # Product images
@@ -74,7 +74,7 @@ Each product includes:
 
 ## Customization
 
-Edit `config.py` to modify:
+Edit `config/` to modify:
 - Crawling delays and timeouts
 - User agent rotation
 - Directory structure

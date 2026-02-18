@@ -1,11 +1,11 @@
 base:
-  base_url: "https://hungphat-jsc.com.vn"
+  base_url: "https://hungphat-jsc.com"
   delay_between_requests: 2
   request_timeout: 10
   max_retries: 3
 
 crawler:
-  base_dir: "crawl_data/hungphat_data_4"
+  base_dir: "data"
   raw_data_dir: "raw_data"
   processed_data_dir: "processed_data"
   images_dir: "images"
